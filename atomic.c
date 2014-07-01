@@ -1,6 +1,7 @@
 #include <stdio.h>		// for printf and fflush
 #include <errno.h>		// for errno
 #include <stdlib.h>		// for exit
+#include <string.h>		// for strcmp
 
 // program to investigate the importance of the atomicity of system calls: specifically a write to a file opened with the O_APPEND flag.
 // atomic_append filename num-bytes [x]
@@ -20,7 +21,17 @@ void errExit(char* errMsg)
 
 int main(int argc, char* argv[])
 {
-	
+	// deal with command line arguements
+	if (argc == 4 && strcmp(argv[3], "x") == 0) {
+		// lseek & write
+	}
+	else if (argc == 3) {
+		// write with append
+	}
+	else {
+		printf("USAGE: %s filename num-bytes [x]\n", argv[0]);
+		exit(EXIT_FAILURE);
+	}
 
 	exit(EXIT_SUCCESS);
 }
